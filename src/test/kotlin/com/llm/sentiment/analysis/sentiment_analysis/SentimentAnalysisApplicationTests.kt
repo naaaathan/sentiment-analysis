@@ -1,10 +1,10 @@
-package com.llm.sentiment.analysis.sentimemt_analysis
+package com.llm.sentiment.analysis.sentiment_analysis
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class SentimemtAnalysisApplicationTests {
+class SentimentAnalysisApplicationTests {
 
 	@Test
 	fun contextLoads() {

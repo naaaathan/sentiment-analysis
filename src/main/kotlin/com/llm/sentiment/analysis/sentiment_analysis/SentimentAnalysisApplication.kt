@@ -1,11 +1,11 @@
-package com.llm.sentiment.analysis.sentimemt_analysis
+package com.llm.sentiment.analysis.sentiment_analysis
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SentimemtAnalysisApplication
+class SentimentAnalysisApplication
 
 fun main(args: Array<String>) {
-	runApplication<SentimemtAnalysisApplication>(*args)
+	runApplication<SentimentAnalysisApplication>(*args)
 }
