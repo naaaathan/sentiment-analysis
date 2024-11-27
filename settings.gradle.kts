@@ -3,6 +3,5 @@ plugins {
 }
 rootProject.name = "sentiment-analysis"
 include("sentiment-analysis-application")
+include("sentiment-llm-engine")
 include("sentiment-task-orchestrator")
-include("sentiment-llm-engine")
-include("sentiment-llm-engine")

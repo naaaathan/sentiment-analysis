@@ -22,6 +22,8 @@ repositories {
 extra["springAiVersion"] = "1.0.0-M4"
 
 dependencies {
+    implementation(project(":sentiment-task-orchestrator"))
+    implementation(project(":sentiment-llm-engine"))
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
