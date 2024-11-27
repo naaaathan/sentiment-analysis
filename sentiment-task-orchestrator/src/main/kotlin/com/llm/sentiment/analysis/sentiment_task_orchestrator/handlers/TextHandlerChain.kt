@@ -1,7 +1,6 @@
 package com.llm.sentiment.analysis.sentiment_task_orchestrator.handlers
 
 import com.llm.sentiment.analysis.sentiment_task_orchestrator.ChainData
-import com.llm.sentiment.analysis.sentiment_task_orchestrator.TextOrchestratorData
 
 class TextHandlerChain(
     firstHandler: TextProcessorHandler
@@ -13,7 +12,7 @@ class TextHandlerChain(
         this.textProcessorHandler = firstHandler
     }
 
-    fun handle(chainData: ChainData) : TextOrchestratorData {
+    fun handle(chainData: ChainData) {
         return textProcessorHandler?.handle(chainData)!!
     }
 

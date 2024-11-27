@@ -9,7 +9,11 @@ class RawTextOrchestrator(
 ) {
 
     fun orchestrate(text: String, task: String): TextOrchestratorData {
-        return textHandlerChain.handle(ChainData(text, task))
+
+        val chainData = ChainData(text = text, task = task)
+        textHandlerChain.handle(chainData)
+
+        return TextOrchestratorData(chainData.fluxResponse)
     }
 
 }

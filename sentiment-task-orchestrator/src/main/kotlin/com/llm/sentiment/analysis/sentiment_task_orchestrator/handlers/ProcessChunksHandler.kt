@@ -1,35 +1,29 @@
 package com.llm.sentiment.analysis.sentiment_task_orchestrator.handlers
 
-import com.llm.sentiment.analysis.sentiment_task_orchestrator.strategy.SentimentStrategy
-import com.llm.sentiment.analysis.sentiment_task_orchestrator.strategy.SummaryStrategy
 import com.llm.sentiment.analysis.sentiment_task_orchestrator.ChainData
-import com.llm.sentiment.analysis.sentiment_task_orchestrator.TextOrchestratorData
 import org.springframework.core.annotation.Order
 import org.springframework.stereotype.Component
 
+
 @Component
 @Order(3)
-class ProcessChunksHandler(
-    private val sentimentStrategy: SentimentStrategy,
-    private val summaryStrategy: SummaryStrategy
-) : TextProcessorHandler {
+class ProcessChunksHandler : TextProcessorHandler {
 
-    private val textProcessorHandler: TextProcessorHandler? = null
+    private lateinit var textProcessorHandler: TextProcessorHandler
 
-    override fun handle(chainData: ChainData): TextOrchestratorData {
+    override fun handle(chainData: ChainData) {
 
-        val strategy = when (chainData.task) {
-            "SUMMARY" -> summaryStrategy
-            "SENTIMENT" -> sentimentStrategy
-            else -> throw IllegalArgumentException("Invalid task")
+        val flowResponse = chainData.strategy?.execute(chainData.text)
+
+        if (flowResponse != null)
+            chainData.fluxResponse = flowResponse
+
+        if (::textProcessorHandler.isInitialized) {
+            textProcessorHandler.handle(chainData)
         }
-
-        strategy.execute()
-
-        return textProcessorHandler?.handle(chainData)!!
     }
 
     override fun setNextHandler(nextHandler: TextProcessorHandler) {
-        textProcessorHandler?.setNextHandler(nextHandler)
+        textProcessorHandler = nextHandler
     }
 }
