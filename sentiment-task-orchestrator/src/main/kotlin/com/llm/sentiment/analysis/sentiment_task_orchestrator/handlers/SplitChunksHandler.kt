@@ -28,7 +28,7 @@ class SplitChunksHandler(
     }
 
     companion object {
-        const val CHUNK_SIZE = 10
+        const val CHUNK_SIZE = 1000
     }
 
 

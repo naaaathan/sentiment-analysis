@@ -16,7 +16,7 @@ abstract class AbstractPromptModelCall {
         val openAiChatOptions = OpenAiChatOptions.builder()
             .withModel("gpt-3.5-turbo")
             .withTemperature(0.4)
-            .withMaxTokens(5)
+            .withMaxTokens(1000)
             .build();
 
         val chatModel = OpenAiChatModel(openAiApi, openAiChatOptions)
